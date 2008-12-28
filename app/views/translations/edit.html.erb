@@ -1,0 +1,12 @@
+<h1>Editing translation</h1>
+
+<% form_for(@translation) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @translation %> |
+<%= link_to 'Back', translations_path %>

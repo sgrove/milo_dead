@@ -1,0 +1,20 @@
+<h1>Editing phrase</h1>
+
+<% form_for(@phrase) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :phrase %><br />
+    <%= f.text_area :phrase %>
+  </p>
+  <p>
+    <%= f.label :language %><br />
+    <%= f.text_field :language %>
+  </p>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @phrase %> |
+<%= link_to 'Back', phrases_path %>

@@ -1,0 +1,22 @@
+<h1>Listing translations</h1>
+
+<table>
+  <tr>
+    <th>Phrase</th>
+    <th>Translation (Language)</th>
+    <th colspan="3">Actions</th>
+  </tr>
+
+<% for translation in @translations %>
+  <tr>
+    <td><%= link_to translation.phrase, phrase_path(translation)  %> -> </td>
+    <td><%= link_to translation, translation %> (<%=h translation.language.code %>)</td>
+    <td><%= link_to 'Edit', edit_translation_path(translation) %></td>
+    <td><%= link_to 'Destroy', translation, :confirm => 'Are you sure? Don\'t destroy for pleasure.', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New translation', new_translation_path %>

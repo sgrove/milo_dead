@@ -1,0 +1,13 @@
+<p>
+  <b>Phrase:</b>
+  <%=h @phrase.phrase %>
+</p>
+
+<p>
+  <b>Language:</b>
+  <%=h @phrase.language %>
+</p>
+
+
+<%= link_to 'Edit', edit_phrase_path(@phrase) %> |
+<%= link_to 'Back', phrases_path %>

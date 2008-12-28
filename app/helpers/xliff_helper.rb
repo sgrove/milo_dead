@@ -1,0 +1,2 @@
+module XliffHelper
+end

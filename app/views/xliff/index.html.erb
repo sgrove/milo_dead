@@ -1,0 +1,6 @@
+What???
+<ul>
+  <% @languages.each do |language| %>
+    <li><%=h language %> <%= link_to 'Download', xliff_download_path(language.id) %></li>
+  <% end %>
+</ul>

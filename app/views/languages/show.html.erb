@@ -1,0 +1,21 @@
+<p>
+  <b>Code:</b>
+  <%=h @language.code %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @language.description %>
+</p>
+
+<p>
+  <b>Translated Phrases (<%= @translations.count %>)</b>
+<ul>
+  <% for translation in @translations%>
+  <li><%=h translation %> -> <%=h translation.phrase %></li>
+  <% end %>
+</p>
+
+
+<%= link_to 'Edit', edit_language_path(@language) %> |
+<%= link_to 'Back', languages_path %>

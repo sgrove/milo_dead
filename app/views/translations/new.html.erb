@@ -1,0 +1,26 @@
+<h1>New translation</h1>
+
+<% form_for(@translation) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :translation %>
+    <%= f.text_area :translation %>
+  </p>
+
+  <p>
+    <%= f.label :phrase_id %>
+    <%= collection_select(:translation, :phrase_id, Phrase.find(:all), :id, "phrase") %>
+  </p>
+
+  <p>
+    <%= f.label :language_id %>
+    <%= collection_select(:translation, :language_id, Language.find(:all), :id, "description") %>
+  </p>
+
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', translations_path %>
