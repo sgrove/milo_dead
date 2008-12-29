@@ -1,3 +1,6 @@
 This is the edge branch, all development is done here.
 
 adding something to this
+
+And this is me adding something again. But from vim. Cause I'm all hardcore like that.
+
