@@ -1,0 +1,3 @@
+page.replace_html "phrase_#{@phrase.id}", :partial => "edit_form"
+page["edit_phrase_#{@phrase.id}"].focus
+page.replace_html :notice, flash[:notice]

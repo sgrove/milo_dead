@@ -1,0 +1,13 @@
+<div id="phrase_listing">
+  <div>
+    <span>Phrase</span>
+    <span>Language</span
+    <span>Translations</span>
+  </div>
+
+  <% for phrase in @phrases %>
+    <div id="phrase_<%= phrase.id %>">
+      <%= render :partial => 'phrase_entry', :locals => { :phrase => phrase } %>
+    </div>
+  <% end %>
+</div>

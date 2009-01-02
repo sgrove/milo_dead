@@ -1,0 +1,15 @@
+  <% remote_form_for @phrase, :url => { :action => (@phrase.new_record?? 'create' : 'update'), :format => 'js' } do |f| %>
+    <%= f.error_messages %>
+      <%= f.hidden_field :id %>
+      <%= f.text_field :phrase %>
+      <%= collection_select(:phrase, :language_id, Language.find(:all), :id, "description") %>
+      <%= f.submit(@phrase.new_record?? "Create" : "Update") %>
+
+      <% if !@phrase.new_record? %>
+        <%= link_to_remote "cancel",
+                    :url => { :action => 'cancel_edit', :id => @phrase.id}
+        %>
+      <% end %>
+
+  <% end %>
+  

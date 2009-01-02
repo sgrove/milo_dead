@@ -1,0 +1,3 @@
+page.replace_html "phrase_#{@phrase.id}", :partial => "phrase_entry", :locals => {:phrase => @phrase}
+page.visual_effect :highlight, "phrase_#{@phrase.id}", :duration => 3
+page.replace_html :notice, flash[:notice]

@@ -1,0 +1,14 @@
+    <div style="float:left;min-width:200px;"><%=h phrase.phrase %></div>
+    <span><%= link_to_remote "Edit",
+                :url  =>  edit_phrase_path(phrase),
+                :with => "'phrase_id='+escape(#{phrase.id})",
+                :method => :get,
+                :success => "$('phrase_phrase').focus"
+    %> | </span>
+    <span>
+      <%= link_to_remote "Translate",
+            :url => { :action => 'edit', :phrase_id => phrase.id} %> |
+    </span>
+    <span><%= link_to_remote "Destroy",
+      :url  => phrase_url(phrase), :method => :delete,
+      :html => { :class  => "destructive" } %></span>

@@ -1,4 +1,8 @@
 class TranslationsController < ApplicationController
+  # HTTP requests using get and post will be processed normally, but AJAX requests will be rendered with no layout. 
+  # This saves you from having to put render :layout => false every time you do an AJAX request.
+  layout proc{ |c| c.request.xhr? ? false : "master" }
+  
   # GET /translations
   # GET /translations.xml
   def index
@@ -8,6 +12,11 @@ class TranslationsController < ApplicationController
       format.html # index.html.erb
       format.xml  { render :xml => @translations }
     end
+  end
+  
+  def get_language_translations
+    @language = Language.find(params[:language_id])
+    @translations = Translation.find(:all, :conditions => {:language_id => params[:language_id]})
   end
 
   # GET /translations/1

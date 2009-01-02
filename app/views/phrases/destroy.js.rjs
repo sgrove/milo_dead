@@ -1,0 +1,4 @@
+page.visual_effect :drop_out, "phrase_#{@phrase.id}"
+#page["phrase_#{@phrase.id}"].remove
+page.replace_html :phrase_count, "#{Phrase.find(:all).size}"
+page.replace_html :notice, flash[:notice]

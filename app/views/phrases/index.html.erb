@@ -1,26 +1,7 @@
-<h1>Listing phrases</h1>
-
-<table>
-  <tr>
-    <th>Phrase</th>
-    <th>Language</th>
-    <th>Translations (of <%=h Language.count %>)</th>
-    <th>Requested Language</th>
-  </tr>
-
-<% for phrase in @phrases %>
-  <tr>
-    <td><%=h phrase.phrase %></td>
-    <td><%=h phrase.language %></td>
-    <td><%=h phrase.translations.count %> (<%=h (phrase.translations.count.to_f / Language.count) * 100 %>%)</td>
-    <td> .. </td>
-    <td><%= link_to 'Show', phrase %></td>
-    <td><%= link_to 'Edit', edit_phrase_path(phrase) %></td>
-    <td><%= link_to 'Destroy', phrase, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New phrase', new_phrase_path %>
+<h1>Listing phrases (<span id="phrase_count"><%= @phrases.size %></span>)</h1>
+Add a new phrase
+<%= render :partial => 'edit_form' %>
+<hr />
+<div id="phrase_listing">
+  <%= render :partial => 'phrases_list', :phrases => @phrases %>  
+</div>

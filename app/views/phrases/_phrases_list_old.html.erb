@@ -1,0 +1,28 @@
+<table>
+  <tr>
+    <th>Phrase</th>
+    <th>Language</th>
+    <th>Translations (of <%=h Language.count %>)</th>
+  </tr>
+
+<% for phrase in @phrases %>
+  <tr id="phrase_<%= phrase.id %>">
+    <td><%=h phrase.phrase %></td>
+    <td><%=h phrase.translations.count %> (<%=h (phrase.translations.count.to_f / Language.count) * 100 %>%)</td>
+    <td><%= link_to 'Edit', edit_phrase_path(phrase) %></td>
+    <td><%= link_to_remote "Delete this post",
+      :url  => phrase_url(phrase), :method => :delete,
+      :html => { :class  => "destructive" } %></td>
+    
+    <td><%= link_to 'Destroy', phrase, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+  <tr>
+    <td colspan="4">&nbsp;</td>
+  </tr>
+  <tr>
+    <td>New</td>
+    <td colspan="3">
+      <td>
+    </tr>
+</table>
