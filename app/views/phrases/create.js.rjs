@@ -1,6 +1,8 @@
 page.replace_html  :phrase_listing, :partial => 'phrases_list', :phrases => @phrases
 page[:new_phrase].reset
-page.visual_effect :highlight, "phrase_#{@phrase.id}", :duration => 3
+#page << "if($('phrase_#{@phrase.id})) {"
+#page.visual_effect :highlight, "phrase_#{@phrase.id}", :duration => 3
+#page << "}"
 page.replace_html :phrase_count, "#{Phrase.count}"
 #page.insert_html :bottom, :phrase_count, "[-> {'#{@phrase.id}', '#{@phrase_id}', '#{@phrase}'}"
 

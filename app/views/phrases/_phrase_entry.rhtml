@@ -7,7 +7,9 @@
     %> | </span>
     <span>
       <%= link_to_remote "Translate",
-            :url => { :action => 'edit', :phrase_id => phrase.id} %> |
+            :url => { :controller => 'translations',
+            :action => 'edit',
+            :phrase_id => phrase.id } %> |
     </span>
     <span><%= link_to_remote "Destroy",
       :url  => phrase_url(phrase), :method => :delete,

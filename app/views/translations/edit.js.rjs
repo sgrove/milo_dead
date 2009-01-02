@@ -1,0 +1,2 @@
+page.replace_html "phrase_#{@phrase.id}", :partial => "translate_form", :locals => {:phrase => @phrase, :translation => @translation}
+page.visual_effect :highlight, "phrase_#{@phrase.id}", :duration => 3

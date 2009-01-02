@@ -43,19 +43,56 @@ class TranslationsController < ApplicationController
 
   # GET /translations/1/edit
   def edit
-    @translation = Translation.find(params[:id])
+    #@translation = Translation.find(params[:id])
+    
+    # TODO: implement language + phrase id checking to make sure they exist
+    @phrase = Phrase.find(:first, :conditions => { :id => params[:phrase_id]})
+    @language = Language.find(:first, :conditions => { :id => params[:language_id]})
+
+    if @language.nil?
+      @language = Language.find(:first, :conditions => { :id => 1})
+    end
+      
+    @translation = Translation.find(:first, :conditions => { :phrase_id => @phrase.phrase , :language_id => @language.id})
+
+    if @translation.nil?
+      @translation = Translation.new
+      @translation.phrase_id = @phrase.id
+      @translation.language_id = @language.id
+    end
+
+    respond_to do |format|
+      format.js
+    end
   end
 
   # POST /translations
   # POST /translations.xml
   def create
     @translation = Translation.new(params[:translation])
+    
+    @phrase   = Phrase.find(:first, :conditions => { :id => @translation.phrase_id})
+    @language = Language.find(:first, :conditions => { :id => @translation.language_id})
+    
+    if (@phrase.nil? or @language.nil?)
+      #FAILS!
+      quit
+    end
+      
+    @translation = Translation.find(:first, :conditions => { :phrase_id => @phrase.id, :language_id => @language.id})
 
+    if @translation.nil?
+      @translation = Translation.new(params[:translation])
+    end
+    
+    @translation.translation = params[:translation][:translation]
+    
     respond_to do |format|
       if @translation.save
         flash[:notice] = 'Translation was successfully created.'
         format.html { redirect_to(@translation) }
         format.xml  { render :xml => @translation, :status => :created, :location => @translation }
+        format.js   { render :layout => false }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @translation.errors, :status => :unprocessable_entity }

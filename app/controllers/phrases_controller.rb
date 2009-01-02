@@ -2,7 +2,10 @@ class PhrasesController < ApplicationController
   # GET /phrases
   # GET /phrases.xml
   def index
-    @phrases = Phrase.find(:all, :order => 'LOWER(phrase) ASC')
+    #@phrases = Phrase.find(:all, :order => 'LOWER(phrase) ASC')
+    
+    @phrases = Phrase.paginate :page => params[:page], :per_page => 10, :order => 'LOWER(phrase) ASC'
+    
     @phrase = Phrase.new()
 
     respond_to do |format|
@@ -50,7 +53,7 @@ class PhrasesController < ApplicationController
 
     respond_to do |format|
       if @phrase.save
-        @phrases = Phrase.find(:all, :order => 'LOWER(phrase) ASC')
+        @phrases = Phrase.paginate :page => params[:page], :per_page => 10, :order => 'LOWER(phrase) ASC'
         
         flash[:notice] = 'Phrase was successfully created.'
         

@@ -1,0 +1,17 @@
+Translating:<br />
+<%=h phrase %>
+<hr />
+
+<% remote_form_for translation do |f| %>
+  <%= f.error_messages %>
+  <%= f.hidden_field :phrase_id, :value => phrase.id %>
+  <%= select("translation", "language_id", Language.find(:all, :conditions => ["id != ?", phrase.language.id]).collect {|p| [ p.description, p.id ] }, { :include_blank => false }) %><br />
+  <%= f.text_area :translation %> <br />
+  
+  
+  <%= f.submit "Create" %>
+<% end %>
+
+<%= link_to_remote "cancel",
+            :url => { :controller => 'phrases', :action => 'cancel_edit', :id => phrase.id}
+%>

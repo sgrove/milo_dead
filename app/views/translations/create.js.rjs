@@ -1,0 +1,9 @@
+page.replace_html "phrase_#{@phrase.id}", :partial => "phrases/phrase_entry", :locals => {:phrase => @phrase}
+page.insert_html :bottom, "phrase_#{@phrase.id}", "<div id='phrase_#{@phrase.id}_message'>Translation Added! #{@phrase} => #{@translation}. Thanks!</div>"
+page.visual_effect :highlight, "phrase_#{@phrase.id}_message", :duration => 3
+page.delay(5) do
+  page.visual_effect :fade, "phrase_#{@phrase.id}_message"
+  page.delay(2) do
+    page.remove "phrase_#{@phrase.id}_message"
+  end
+end
