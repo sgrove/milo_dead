@@ -1,4 +1,25 @@
-First post
-edit of the README on windows. Go Go CoThink Crime Fighting Team!
+MiLO - CoThink
+---------------------------
 
-Im a little teapot hear me spout. Here is my handle, and HERE is my spout, 
+MiLO is a non-sense acronym for a small translation tool being used and developed by the CoThink team. It's not intended to compete against such well-designed tools as pootle or F.I.T. Instead, it's just a simple tool to get us up and running on the rails framework and get create a simple small-scale translation tool that we can use to make the lives of our translators a bit easier.
+
+We hope you'll find some use from it as well.
+
+LICENSE
+------------------
+    MiLO
+    Copyright (C) 2008 Sean Grove 
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Affero General Public License as
+    published by the Free Software Foundation, either version 3 of the
+    License, or (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Affero General Public License for more details.
+
+    You should have received a copy of the GNU Affero General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
