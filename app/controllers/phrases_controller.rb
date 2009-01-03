@@ -49,11 +49,23 @@ class PhrasesController < ApplicationController
   # POST /phrases
   # POST /phrases.xml
   def create
-    @phrase = Phrase.new(params[:phrase])
+    @phrase = Phrase.find(:first, :conditions => {:phrase => params[:phrase][:phrase]})
+    
+    if @phrase.nil?
+      @phrase = Phrase.new(params[:phrase])
+    end
+    
+    offset = Phrase.count :conditions => ["LOWER(phrase) < ?", @phrase.phrase.downcase]
+    
+    per_page = 10
+    
+    page = (offset / per_page) + 1
+    
+    
 
     respond_to do |format|
       if @phrase.save
-        @phrases = Phrase.paginate :page => params[:page], :per_page => 10, :order => 'LOWER(phrase) ASC'
+        @phrases = Phrase.paginate :page => page, :per_page => per_page, :order => 'LOWER(phrase) ASC'
         
         flash[:notice] = 'Phrase was successfully created.'
         

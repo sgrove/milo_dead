@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  #map.connect 'phrases/:page', :controller => 'phrases', :action => 'index'
+
   map.resources :translations
 
   map.resources :phrases
